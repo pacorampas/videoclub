@@ -2,11 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types'
 import MovieCard from './MovieCard'
 
-const MoviesList = ({ moviesResults }) => <ul>
+const MoviesList = ({ moviesResults, baseUrl }) => <ul>
   {moviesResults.length > 0 && moviesResults.map(movie => <li key={movie.id}>
     <MovieCard
       title={movie.title}
       overview={movie.overview}
+      imgSrc={`${baseUrl}/w342/${movie.poster_path}`}
     />
   </li>)}
   {/* @TODO: loading */}
@@ -19,6 +20,7 @@ MoviesList.propTypes = {
     title: PropTypes.string.isRequired,
     overview: PropTypes.string.isRequired,
   })).isRequired,
+  baseUrl: PropTypes.string.isRequired,
 };
 
 export default MoviesList;

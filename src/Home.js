@@ -18,12 +18,13 @@ class Movie extends PureComponent {
       moviesResults,
       page,
       totalPages,
-      totalResults
+      totalResults,
+      configuration,
     } = this.props;
 
     return(
       <div>
-        <MoviesList moviesResults={moviesResults} />
+        <MoviesList moviesResults={moviesResults} baseUrl={configuration.images.base_url} />
         <Pagination
           page={page}
           totalPages={totalPages}
@@ -50,6 +51,11 @@ Movie.propTypes = {
   page: PropTypes.number.isRequired,
   totalPages: PropTypes.number.isRequired,
   totalResults: PropTypes.number.isRequired,
+  configuration: PropTypes.shape({
+    images: PropTypes.shape({
+      base_url: PropTypes.string,
+    })
+  }).isRequired,
 };
 
 Movie.defaultProps = {
@@ -57,15 +63,18 @@ Movie.defaultProps = {
   page: 1,
   totalPages: 0,
   totalResults: 0,
+  configuration: {
+    images: {},
+  },
 }
 
 function mapStateToProps(state) {
-  console.log(state)
   return {
     moviesResults: state.movies.moviesResults,
     page: state.movies.page,
     totalPages: state.movies.totalPages,
     totalResults: state.movies.totalResults,
+    configuration: state.movies.configuration,
   };
 }
 
