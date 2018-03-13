@@ -1,12 +1,18 @@
 import React, { Component } from 'react'
 import { Switch, Route } from 'react-router-dom'
+import { connect } from 'react-redux'
 import logo from './logo.svg'
 import './App.css'
+import { configuration } from './store/actions'
 import Home from './Home.js'
 import Movie from './Movie.js'
 import NotFound from './NotFound.js'
 
 class App extends Component {
+  componentWillMount() {
+    this.props.dispatch(configuration())
+  }
+
   render() {
     return (
       <div>
@@ -32,4 +38,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect(null)(App);

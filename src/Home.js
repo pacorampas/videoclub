@@ -47,16 +47,16 @@ Movie.propTypes = {
     title: PropTypes.string.isRequired,
     overview: PropTypes.string.isRequired,
   })).isRequired,
-  page: PropTypes.number,
-  totalPages: PropTypes.number,
-  totalResults: PropTypes.number,
+  page: PropTypes.number.isRequired,
+  totalPages: PropTypes.number.isRequired,
+  totalResults: PropTypes.number.isRequired,
 };
 
 Movie.defaultProps = {
   moviesResults: [],
   page: 1,
-  totalPages: null,
-  totalResults: null,
+  totalPages: 0,
+  totalResults: 0,
 }
 
 function mapStateToProps(state) {
