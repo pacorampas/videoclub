@@ -1,11 +1,16 @@
-export const FETCH_STUFF = 'FETCH_STUFF';
-export const RECEIVE_STUFF = 'RECEIVE_STUFF';
+import request from './request'
 
-export function fetchStuff() {
-  return dispatch => {
-    return dispatch({
-      type: RECEIVE_STUFF,
-      stuff: { hi: 'world' },
-    });
-  }
-};
+export const DISCOVER_MOVIE_SUCCESS = 'DISCOVER_MOVIE_SUCCESS';
+
+export const discoverMovie = (page = 1) => (dispatch) => {
+  return request.get('/discover/movie', {
+    params: {
+      page,
+    }
+  })
+    .then((response) => dispatch({
+      type: DISCOVER_MOVIE_SUCCESS,
+      data: response.data,
+    }))
+    .catch((e) => console.log(e))
+}
