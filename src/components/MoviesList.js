@@ -5,6 +5,7 @@ import MovieCard from './MovieCard'
 const MoviesList = ({ moviesResults, baseUrl }) => <ul>
   {moviesResults.length > 0 && moviesResults.map(movie => <li key={movie.id}>
     <MovieCard
+      id={movie.id}
       title={movie.title}
       overview={movie.overview}
       imgSrc={`${baseUrl}/w342/${movie.poster_path}`}

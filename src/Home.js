@@ -7,7 +7,7 @@ import { discoverMovie } from './store/actions'
 import MoviesList from './components/MoviesList'
 import Pagination from './components/Pagination'
 
-class Movie extends PureComponent {
+class Home extends PureComponent {
   componentWillMount() {
     this.props.dispatch(discoverMovie(this.props.page))
   }
@@ -36,7 +36,7 @@ class Movie extends PureComponent {
   }
 }
 
-Movie.propTypes = {
+Home.propTypes = {
   dispatch: PropTypes.func.isRequired,
   match: PropTypes.shape({
     params: PropTypes.shape({
@@ -58,7 +58,7 @@ Movie.propTypes = {
   }).isRequired,
 };
 
-Movie.defaultProps = {
+Home.defaultProps = {
   moviesResults: [],
   page: 1,
   totalPages: 0,
@@ -80,4 +80,4 @@ function mapStateToProps(state) {
 
 export default connect(
   mapStateToProps,
-)(Movie);
+)(Home);
