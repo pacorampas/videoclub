@@ -177,7 +177,6 @@ p {
   width: 100%;
 }
 
-
 @media (min-width: 520px) {
   .movie-details-poster {
     display: block;
@@ -201,6 +200,14 @@ p {
   .movie-details-poster {
     margin-top: -288px;
   }
+}
+
+.movie-bars {
+  padding: 20px;
+}
+
+.movie-bars-item {
+  margin-bottom: 20px;
 }
 /* /MOVIE DETAIL */
 
@@ -274,3 +281,32 @@ p {
   opacity: .2;
 }
 /* /PAGINATION */
+
+/* POINTS BAR */
+.points-bar {
+  position: relative;
+  height: 30px;
+  border: solid 2px #ddd;
+  border-radius: 5px;
+  background: #eee;
+  overflow: hidden;
+}
+
+.points-bar-indicator {
+  float: left;
+  width: 0;
+  height: 100%;
+  background: #000;
+  border-radius: 0 5px 5px 0;
+}
+
+.points-bar-data {
+  float: right;
+  margin-right: 5px;
+  font-size: 13px;
+  line-height: 26px;
+  display: inline-block;
+  color: #999;
+}
+
+/* /POINTS BAR */

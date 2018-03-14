@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import uuidV4 from 'uuid/v4'
 import { getMovieDetails } from './store/actions'
+import PointsBar from './components/PointsBar'
 
 class Movie extends PureComponent {
   componentWillMount() {
@@ -20,7 +21,7 @@ class Movie extends PureComponent {
     return(
       <div className="movie">
 
-        <div className="movie-details-wrapper">
+        <section className="movie-details-wrapper">
           <img className="movie-details-backdrop" src={`${configuration.images.base_url}/w780/${movieDetails.backdrop_path}`} alt={movieDetails.title} />
           <div className="movie-details u-flex">
             <div className="movie-details-poster u-flexGrow1">
@@ -37,18 +38,18 @@ class Movie extends PureComponent {
             <h4 className="color-white">General</h4>
             <p className="color-white opacity-text">{movieDetails.overview}</p>
           </div>
-        </div>
+        </section>
 
-
-          <p>Vote average: {movieDetails.vote_average}</p>
-          <p>Vote count: {movieDetails.vote_count}</p>
-          <li>Popularity: {movieDetails.popularity}</li>
-
-
-
-
-
-
+        <section className="movie-bars">
+          <div className="movie-bars-item">
+            <h4>Votes ({movieDetails.vote_count})</h4>
+            <PointsBar points={movieDetails.vote_average} max={10} color="#ff8e25" />
+          </div>
+          <div className="movie-bars-item">
+            <h4>Popularity</h4>
+            <PointsBar points={movieDetails.popularity} max={1000} color="#ff8e25" />
+          </div>
+        </section>
 
 
         <h4>Technical data</h4>
