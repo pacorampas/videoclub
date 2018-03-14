@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import './App.css'
 import 'suitcss-utils-flex'
 import logoSrc from './logo.svg'
-import { configuration } from './store/actions'
+import { configuration, getGenres } from './store/actions'
 import Home from './Home.js'
 import Movie from './Movie.js'
 import NotFound from './NotFound.js'
@@ -12,6 +12,7 @@ import NotFound from './NotFound.js'
 class App extends Component {
   componentWillMount() {
     this.props.store.dispatch(configuration())
+    this.props.store.dispatch(getGenres())
   }
 
   render() {

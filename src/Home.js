@@ -6,6 +6,7 @@ import { discoverMovie } from './store/actions'
 
 import MoviesList from './components/MoviesList'
 import Pagination from './components/Pagination'
+import Select from './components/Select'
 
 class Home extends PureComponent {
   componentWillMount() {
@@ -19,10 +20,18 @@ class Home extends PureComponent {
       page,
       totalPages,
       configuration,
-    } = this.props;
+      genres,
+    } = this.props
+
+    const noneGenre = [{ id: -1, name: 'Not filtered' }]
 
     return (
       <div className="disvover-container">
+        <Select
+          options={noneGenre.concat(genres)}
+          onChange={(value) => dispatch(discoverMovie(1, value))}
+        />
+
         <MoviesList moviesResults={moviesResults} baseUrl={configuration.images.base_url} />
         <Pagination
           page={page}
@@ -62,6 +71,7 @@ Home.defaultProps = {
   configuration: {
     images: {},
   },
+  genres: [],
 }
 
 function mapStateToProps(state) {
@@ -70,6 +80,7 @@ function mapStateToProps(state) {
     page: state.movies.page,
     totalPages: state.movies.totalPages,
     configuration: state.movies.configuration,
+    genres: state.movies.genres,
   };
 }
 

@@ -159,7 +159,12 @@ p {
 
 /* DISCOVER */
 .disvover-container {
-  padding: 24px;
+  text-align: center;
+  padding: 16px 24px 24px;
+}
+
+.disvover-container select {
+  margin-bottom: 16px;
 }
 /* /DISCOVER */
 

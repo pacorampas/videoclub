@@ -4,6 +4,7 @@ export const CONFIGURATION_SUCCESS = 'CONFIGURATION_SUCCESS'
 export const CONFIGURATION_FROM_LOCAL_STORAGE = 'CONFIGURATION_FROM_LOCAL_STORAGE'
 export const DISCOVER_MOVIE_SUCCESS = 'DISCOVER_MOVIE_SUCCESS'
 export const MOVIE_DETAILS_SUCCESS = 'MOVIE_DETAILS_SUCCESS'
+export const GET_GENRES_SUCCESS = 'GET_GENRES_SUCCESS'
 export const ERROR = 'ERROR'
 
 // @TODO make a elegants catch error
@@ -30,12 +31,16 @@ export const configuration = () => (dispatch) => {
   }
 }
 
-export const discoverMovie = (page = 1) => (dispatch) => {
-  return request.get('/discover/movie', {
+export const discoverMovie = (page = 1, genreId) => (dispatch) => {
+  const data = {
     params: {
       page,
     }
-  })
+  };
+  if (genreId && genreId > -1) {
+    data.params['with_genres'] = genreId
+  }
+  return request.get('/discover/movie', data)
     .then((response) => dispatch({
       type: DISCOVER_MOVIE_SUCCESS,
       data: response.data,
@@ -62,3 +67,15 @@ export const cleanError = () => dispatch => dispatch({
   type: ERROR,
   value: false,
 })
+
+export const getGenres = () => dispatch => {
+  return request.get('/genre/movie/list')
+    .then((response) => dispatch({
+      type: GET_GENRES_SUCCESS,
+      data: response.data.genres,
+    }))
+    .catch((e) => dispatch({
+      type: ERROR,
+      value: true,
+    }))
+}
