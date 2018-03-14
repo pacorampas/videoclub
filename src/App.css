@@ -58,11 +58,34 @@ p {
 }
 
 .opacity-text {
-  opacity: .85;
+  opacity: .8;
+}
+
+.opacity-text-intense {
+  opacity: .5;
 }
 
 .color-white {
   color: #fff;
+}
+
+.list {
+  list-style: circle;
+  padding-left: 26px;
+  margin-bottom: 20px;
+}
+
+.list li {
+  margin-bottom: 4px;
+}
+
+.genres {
+  display: inline-block;
+  margin: 5px;
+  padding: 10px;
+  border: solid 1px #ddd;
+  border-radius: 5px;
+  color: #666;
 }
 
 /* /GLOBAL */
@@ -209,6 +232,14 @@ p {
 .movie-bars-item {
   margin-bottom: 20px;
 }
+
+.movie-genres {
+  padding: 20px;
+}
+
+.movie-genres .genres:first-child {
+  margin-left: 0;
+}
 /* /MOVIE DETAIL */
 
 /* MOVIE CARD */
@@ -308,5 +339,40 @@ p {
   display: inline-block;
   color: #999;
 }
-
 /* /POINTS BAR */
+
+/* TAB */
+.tab-pannel-nav {
+  border: solid 1px #ddd;
+  border-right: 0;
+  border-left: 0;
+}
+
+.tab {
+  position: relative;
+  display: block;
+  padding: 20px 10px;
+  font-size: 14px;
+  text-align: center;
+  width: 100%;
+}
+
+.tab.active {
+  color: #01d277;
+}
+
+.tab.active:after {
+  content: '';
+  display: block;
+  position: absolute;
+  right: 10px;
+  left: 10px;
+  bottom: 0;
+  height: 2px;
+  background: #01d277;
+}
+
+.tab-pannel-pannel {
+  padding: 20px;
+}
+/* /TAB */

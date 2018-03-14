@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import uuidV4 from 'uuid/v4'
 import { getMovieDetails } from './store/actions'
 import PointsBar from './components/PointsBar'
+import TabPannel from './components/TabPannel'
 
 class Movie extends PureComponent {
   componentWillMount() {
@@ -51,35 +52,56 @@ class Movie extends PureComponent {
           </div>
         </section>
 
+        <section>
+          <TabPannel
+            data={[
+              {
+                tab: 'TECNICAL DATA',
+                pannel:
+                  <div>
+                    <h4>Interesting data</h4>
+                    <ul className="list opacity-text-intense">
+                      <li>Budget: {movieDetails.budget}</li>
+                      <li>Revenue: {movieDetails.revenue}</li>
+                      <li>Runtime: {movieDetails.runtime}</li>
+                      <li>For adults: {movieDetails.adults}</li>
+                      <li>Status: {movieDetails.status}</li>
+                      <li>Imdb id: {movieDetails.imdb_id}</li>
+                      <li>Original language: {movieDetails.original_language}</li>
+                      <li>Original title: {movieDetails.original_title}</li>
+                      <li>Video: {movieDetails.video}</li>
+                      <li>Homepage: <a href={movieDetails.homepage} target="_blank" rel="noreferrer noopener">go to homepage</a></li>
+                    </ul>
+                  </div>
+              },
+              {
+                tab: 'PRODUCTION DATA',
+                pannel:
+                  <div>
+                    <h4>Production companies</h4>
+                    <ul className="list opacity-text-intense">
+                      {movieDetails.production_companies.map(company => <li key={company.id}>{company.name}</li>)}
+                    </ul>
 
-        <h4>Technical data</h4>
-        <ul>
-          <li>Budget: {movieDetails.budget}</li>
-          <li>Revenue: {movieDetails.revenue}</li>
-          <li>Runtime: {movieDetails.runtime}</li>
-          <li>For adults: {movieDetails.adults}</li>
-          <li>Status: {movieDetails.status}</li>
-          <li>Imdb id: {movieDetails.imdb_id}</li>
-          <li>Original language: {movieDetails.original_language}</li>
-          <li>Original title: {movieDetails.original_title}</li>
-          <li>Video: {movieDetails.video}</li>
-          <li>Homepage: <a href={movieDetails.homepage} target="_blank" rel="noreferrer noopener">go to homepage</a></li>
-        </ul>
-
-        <h4>Production companies</h4>
-        <ul>
-          {movieDetails.production_companies.map(company => <li key={company.id}>{company.name} - {company.logo_path}</li>)}
-        </ul>
-
-        <h4>Production countries</h4>
-        <ul>
-          {movieDetails.production_countries.map(country => <li key={uuidV4()}>{country.name}</li>)}
-        </ul>
-
-        <h4>Spoke lenguages</h4>
-        <ul>
-          {movieDetails.spoken_languages.map(lang => <li key={uuidV4()}>{lang.name}</li>)}
-        </ul>
+                    <h4>Production countries</h4>
+                    <ul className="list opacity-text-intense">
+                      {movieDetails.production_countries.map(country => <li key={uuidV4()}>{country.name}</li>)}
+                    </ul>
+                  </div>
+              },
+              {
+                tab: 'LANGUAGES',
+                pannel:
+                  <div>
+                    <h4>Languages</h4>
+                    <ul className="list opacity-text-intense">
+                      {movieDetails.spoken_languages.map(lang => <li key={uuidV4()}>{lang.name}</li>)}
+                    </ul>
+                  </div>
+              },
+            ]}
+          />
+        </section>
 
         {movieDetails.belongs_to_collection &&
           <Fragment>
@@ -93,10 +115,12 @@ class Movie extends PureComponent {
           </Fragment>
         }
 
-        <h4>Gendres</h4>
-        <ul>
-          {movieDetails.genres.map(genre => <li key={genre.id}>{genre.name}</li>)}
-        </ul>
+        <section className="movie-genres">
+          <h4>Gendres</h4>
+          <ul>
+            {movieDetails.genres.map(genre => <li className="genres" key={genre.id}>{genre.name}</li>)}
+          </ul>
+        </section>
 
       </div>
     );
