@@ -1,6 +1,5 @@
 import React, { PureComponent, Fragment } from 'react'
 import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import uuidV4 from 'uuid/v4'
 import { getMovieDetails } from './store/actions'
@@ -22,12 +21,6 @@ class Movie extends PureComponent {
 
     return(
       <div>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-        </ul>
-
         <h2>{movieDetails.title} ({movieDetails.release_date})</h2>
         <h3>{movieDetails.tagline}</h3>
         <p>{movieDetails.overview}</p>

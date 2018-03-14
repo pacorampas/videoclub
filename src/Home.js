@@ -18,21 +18,19 @@ class Home extends PureComponent {
       moviesResults,
       page,
       totalPages,
-      totalResults,
       configuration,
     } = this.props;
 
-    return(
+    return (
       <div>
         <MoviesList moviesResults={moviesResults} baseUrl={configuration.images.base_url} />
         <Pagination
           page={page}
           totalPages={totalPages}
-          totalResults={totalResults}
           action={page => dispatch(discoverMovie(page))}
         />
       </div>
-    );
+    )
   }
 }
 
@@ -50,7 +48,6 @@ Home.propTypes = {
   })).isRequired,
   page: PropTypes.number.isRequired,
   totalPages: PropTypes.number.isRequired,
-  totalResults: PropTypes.number.isRequired,
   configuration: PropTypes.shape({
     images: PropTypes.shape({
       base_url: PropTypes.string,
@@ -62,7 +59,6 @@ Home.defaultProps = {
   moviesResults: [],
   page: 1,
   totalPages: 0,
-  totalResults: 0,
   configuration: {
     images: {},
   },
@@ -73,7 +69,6 @@ function mapStateToProps(state) {
     moviesResults: state.movies.moviesResults,
     page: state.movies.page,
     totalPages: state.movies.totalPages,
-    totalResults: state.movies.totalResults,
     configuration: state.movies.configuration,
   };
 }

@@ -1,28 +1,151 @@
-.App {
-  text-align: center;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
+button {
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  outline: none;
+}
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+a:hover, a:active {
+  opacity: 0.8;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 64px;
+  background: #000;
+  padding: 0 24px;
+  z-index: 100;
+}
+
+.header-content {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.header-content:after {
+  content: '';
+  display: table;
+  width: 100%;
+  clear: both;
+}
+
+.logo {
+  display: inline-block;
+  width: 60px;
+  height:  60px;
+  padding: 12px 4px 12px 0;
+}
+
+.nav,
+.logo {
+  float: left;
+}
+
+.nav-item {
+  display: inline-block;
+  position: relative;
+  height: 100%;
+  padding: 0 8px;
+  line-height: 64px;
+}
+
+.nav-link {
+  color: #fff;
+}
+
+.container {
+  padding: 84px 24px 24px;
+  background: #eee;
+}
+
+.movie-card {
+  background: #fff;
+  border: solid 1px #ddd;
+  margin: 0 10px 20px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.movie-card-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #000;
+}
+
+.movie-card-overview {
+  font-size: 14px;
+  color: #999;
+  max-height: 145px;
+  overflow-y: scroll;
+}
+
+.movie-card-img {
+  display: none;
+}
+
+@media (min-width: 520px) {
+  .movie-card {
+    width: 483px;
+    height: 278px;
+  }
+
+  .movie-card-img {
+    display: inline-block;
+    width: 185px;
+  }
+}
+
+.movie-card-more-info {
+  padding: 16px 20px;
+  border-top: solid 1px #DDD;
+}
+
+.movie-card-link {
+  color: #333;
+  font-size: 14px;
+}
+
+.movie-card-details {
   padding: 20px;
-  color: white;
 }
 
-.App-title {
-  font-size: 1.5em;
+.pagination-button {
+  color: #01d277;
+  font-size: 14px;
+  padding: 0 10px;
 }
 
-.App-intro {
-  font-size: large;
+.pagination-button:hover,
+.pagination-button:active {
+  opacity: .6;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.pagination-button[disabled] {
+  opacity: .2;
 }
