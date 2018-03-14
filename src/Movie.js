@@ -1,4 +1,4 @@
-import React, { PureComponent, Fragment } from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import uuidV4 from 'uuid/v4'
@@ -14,7 +14,7 @@ class Movie extends PureComponent {
 
   render() {
     const { movieDetails, configuration } = this.props
-    console.log(movieDetails)
+
     if (!movieDetails.title) {
       return <div />
     }
@@ -104,15 +104,18 @@ class Movie extends PureComponent {
         </section>
 
         {movieDetails.belongs_to_collection &&
-          <Fragment>
-            <h4>Collection</h4>
-            <ul>
-              <li>{movieDetails.belongs_to_collection.backdrop_path}</li>
-              <li>{movieDetails.belongs_to_collection.id}</li>
-              <li>{movieDetails.belongs_to_collection.name}</li>
-              <li>{movieDetails.belongs_to_collection.poster_path}</li>
-            </ul>
-          </Fragment>
+          <div className="movie-collection u-flex u-flexJustifyCenter" style={{ background: `url(${configuration.images.base_url}/w780/${movieDetails.belongs_to_collection.backdrop_path})`}}>
+            {/* @TODO make a component with srcSet for get optimized images and with base_url  */}
+            <div className="movie-collection-poster u-flexGrow1">
+              <img className="movie-collection-poster-img" src={`${configuration.images.base_url}/w342/${movieDetails.belongs_to_collection.poster_path}`} />
+            </div>
+            <div className="movie-collection-title u-flexGrow3 u-flex u-flexCol u-flexJustifyCenter">
+              <h3 className="color-white">Collection: {movieDetails.belongs_to_collection.name}</h3>
+              <div>
+                <button className="button" onClick={() => alert('Siento las molestias pero aún no funciona')}>Go to collection</button>
+              </div>
+            </div>
+          </div>
         }
 
         <section className="movie-genres">

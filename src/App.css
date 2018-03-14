@@ -88,6 +88,19 @@ p {
   color: #666;
 }
 
+.button {
+  font-size: 16px;
+  padding: 10px 16px;
+  border-radius: 30px;
+  color: #fff;
+  border: solid 2px #01d277;
+  color: #01d277;
+}
+
+.button:hover, .button:active {
+  opacity: 0.7;
+}
+
 /* /GLOBAL */
 
 /* APP */
@@ -239,6 +252,43 @@ p {
 
 .movie-genres .genres:first-child {
   margin-left: 0;
+}
+
+.movie-collection {
+  padding: 20px;
+  background-repeat: no-repeat;
+}
+
+.movie-collection-poster {
+  max-width: 120px;
+}
+
+.movie-collection-poster-img {
+  width: 100%;
+  box-shadow: 0 0 4px rgba(0,0,0,0.2);
+}
+
+.movie-collection-title {
+  text-align: center;
+  padding: 20px;
+}
+
+.movie-collection-title .button {
+  margin-top: 8px;
+}
+
+.movie-collection-poster {
+  display: none;
+}
+
+@media (min-width: 520px) {
+  .movie-collection-title {
+    text-align: left;
+  }
+
+  .movie-collection-poster {
+    display: block;
+  }
 }
 /* /MOVIE DETAIL */
 
