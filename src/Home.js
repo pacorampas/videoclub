@@ -22,7 +22,7 @@ class Home extends PureComponent {
     } = this.props;
 
     return (
-      <div>
+      <div className="disvover-container">
         <MoviesList moviesResults={moviesResults} baseUrl={configuration.images.base_url} />
         <Pagination
           page={page}

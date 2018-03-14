@@ -12,35 +12,55 @@ class Movie extends PureComponent {
 
   render() {
     const { movieDetails, configuration } = this.props
-
     console.log(movieDetails)
-
     if (!movieDetails.title) {
       return <div />
     }
 
     return(
-      <div>
-        <h2>{movieDetails.title} ({movieDetails.release_date})</h2>
-        <h3>{movieDetails.tagline}</h3>
-        <p>{movieDetails.overview}</p>
+      <div className="movie">
 
-        <p>Vote average: {movieDetails.vote_average}</p>
-        <p>Vote count: {movieDetails.vote_count}</p>
+        <div className="movie-details-wrapper">
+          <img className="movie-details-backdrop" src={`${configuration.images.base_url}/w780/${movieDetails.backdrop_path}`} alt={movieDetails.title} />
+          <div className="movie-details u-flex">
+            <div className="movie-details-poster u-flexGrow1">
+              <img className="movie-details-poster-img" src={`${configuration.images.base_url}/w342/${movieDetails.poster_path}`} alt={movieDetails.title} />
+            </div>
+            <div className="movie-details-title-wrapper u-flexGrow2">
+              <h2 className="movie-details-title color-white">
+                {movieDetails.title} <span className="color-white opacity-text">({movieDetails.release_date})</span>
+              </h2>
+              <h3 className="color-white opacity-text">{movieDetails.tagline}</h3>
+            </div>
+          </div>
+          <div className="movie-details-more-info">
+            <h4 className="color-white">General</h4>
+            <p className="color-white opacity-text">{movieDetails.overview}</p>
+          </div>
+        </div>
 
-        <img src={`${configuration.images.base_url}/w342/${movieDetails.poster_path}`} alt={movieDetails.title} />
+
+          <p>Vote average: {movieDetails.vote_average}</p>
+          <p>Vote count: {movieDetails.vote_count}</p>
+          <li>Popularity: {movieDetails.popularity}</li>
+
+
+
+
+
+
+
 
         <h4>Technical data</h4>
         <ul>
-          <li>For adults: {movieDetails.adults}</li>
-          <li>Status: {movieDetails.status}</li>
           <li>Budget: {movieDetails.budget}</li>
           <li>Revenue: {movieDetails.revenue}</li>
           <li>Runtime: {movieDetails.runtime}</li>
+          <li>For adults: {movieDetails.adults}</li>
+          <li>Status: {movieDetails.status}</li>
           <li>Imdb id: {movieDetails.imdb_id}</li>
           <li>Original language: {movieDetails.original_language}</li>
           <li>Original title: {movieDetails.original_title}</li>
-          <li>Popularity: {movieDetails.popularity}</li>
           <li>Video: {movieDetails.video}</li>
           <li>Homepage: <a href={movieDetails.homepage} target="_blank" rel="noreferrer noopener">go to homepage</a></li>
         </ul>
@@ -90,6 +110,7 @@ Movie.propTypes = {
   }).isRequired,
   movieDetails: PropTypes.shape({
     adults: PropTypes.bool,
+    backdrop_path: PropTypes.string,
     budget: PropTypes.number,
     title: PropTypes.string,
     tagline: PropTypes.string,

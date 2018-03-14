@@ -31,6 +31,43 @@ a:hover, a:active {
   opacity: 0.8;
 }
 
+/* GLOBAL */
+h2 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 200;
+  margin-bottom: 8px;
+}
+
+h4 {
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+
+p {
+  font-size: 15px;
+  font-weight: 200px;
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.opacity-text {
+  opacity: .85;
+}
+
+.color-white {
+  color: #fff;
+}
+
+/* /GLOBAL */
+
+/* APP */
 .header {
   position: fixed;
   top: 0;
@@ -79,10 +116,95 @@ a:hover, a:active {
 }
 
 .container {
-  padding: 84px 24px 24px;
-  background: #eee;
+  padding-top: 64px;
+  background: #f9f9f9;
+}
+/* /APP */
+
+/* DISCOVER */
+.disvover-container {
+  padding: 24px;
+}
+/* /DISCOVER */
+
+/* MOVIE DETAIL */
+.movie {
+  max-width: 900px;
+  margin: 0 auto;
+  box-shadow: 0 0 4px rgba(0,0,0,0.2);
 }
 
+.movie-details-wrapper {
+  position: relative;
+  background-image: radial-gradient(circle at 20% 50%, rgba(11.37%, 29.80%, 22.75%, 0.98) 0%, rgba(33.33%, 50.98%, 35.69%, 0.88) 100%);
+}
+
+.movie-details-backdrop {
+  display: block;
+  width: 100%;
+}
+
+.movie-details {
+  padding: 20px;
+  background: rgba(0,0,0,0.6);
+}
+
+.movie-details-poster {
+  display: none;
+}
+
+.movie-details-poster-img {
+  display: block;
+  box-shadow: 0 0 4px rgba(0,0,0,0.2);
+}
+
+.movie-details-title-wrapper {
+  padding: 20px 20px 0;
+}
+
+.movie-details-title span {
+  font-weight: 300;
+  font-size: 0.8em;
+}
+
+.movie-details-more-info {
+  position: relative;
+  padding: 20px;
+  z-index: 10;
+}
+
+.movie-details-poster-img {
+  width: 100%;
+}
+
+
+@media (min-width: 520px) {
+  .movie-details-poster {
+    display: block;
+    margin-top: -148px;
+  }
+}
+
+@media (min-width: 600px) {
+  .movie-details-poster {
+    margin-top: -186px;
+  }
+}
+
+@media (min-width: 720px) {
+  .movie-details-poster {
+    margin-top: -240px;
+  }
+}
+
+@media (min-width: 800px) {
+  .movie-details-poster {
+    margin-top: -288px;
+  }
+}
+/* /MOVIE DETAIL */
+
+/* MOVIE CARD */
 .movie-card {
   background: #fff;
   border: solid 1px #ddd;
@@ -109,18 +231,6 @@ a:hover, a:active {
   display: none;
 }
 
-@media (min-width: 520px) {
-  .movie-card {
-    width: 483px;
-    height: 278px;
-  }
-
-  .movie-card-img {
-    display: inline-block;
-    width: 185px;
-  }
-}
-
 .movie-card-more-info {
   padding: 16px 20px;
   border-top: solid 1px #DDD;
@@ -135,6 +245,20 @@ a:hover, a:active {
   padding: 20px;
 }
 
+@media (min-width: 520px) {
+  .movie-card {
+    width: 483px;
+    height: 278px;
+  }
+
+  .movie-card-img {
+    display: inline-block;
+    width: 185px;
+  }
+}
+/* /MOVIE CARD */
+
+/* PAGINATION */
 .pagination-button {
   color: #01d277;
   font-size: 14px;
@@ -149,3 +273,4 @@ a:hover, a:active {
 .pagination-button[disabled] {
   opacity: .2;
 }
+/* /PAGINATION */
