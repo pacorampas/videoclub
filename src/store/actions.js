@@ -1,5 +1,4 @@
 import request from './request'
-import { browserHistory } from 'react-router-dom'
 
 export const CONFIGURATION_SUCCESS = 'CONFIGURATION_SUCCESS'
 export const CONFIGURATION_FROM_LOCAL_STORAGE = 'CONFIGURATION_FROM_LOCAL_STORAGE'

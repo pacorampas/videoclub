@@ -114,7 +114,7 @@ class Movie extends Component {
           <div className="movie-collection u-flex u-flexJustifyCenter" style={{ background: `url(${configuration.images.base_url}/w780/${movieDetails.belongs_to_collection.backdrop_path})`}}>
             {/* @TODO make a component with srcSet for get optimized images and with base_url  */}
             <div className="movie-collection-poster u-flexGrow1">
-              <img className="movie-collection-poster-img" src={`${configuration.images.base_url}/w342/${movieDetails.belongs_to_collection.poster_path}`} />
+            <img className="movie-collection-poster-img" src={`${configuration.images.base_url}/w342/${movieDetails.belongs_to_collection.poster_path}`} alt={movieDetails.title} />
             </div>
             <div className="movie-collection-title u-flexGrow3 u-flex u-flexCol u-flexJustifyCenter">
               <h3 className="color-white">Collection: {movieDetails.belongs_to_collection.name}</h3>
