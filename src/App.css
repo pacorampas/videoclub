@@ -311,8 +311,6 @@ p {
 .movie-card-overview {
   font-size: 14px;
   color: #999;
-  max-height: 145px;
-  overflow-y: scroll;
 }
 
 .movie-card-img {
@@ -342,6 +340,16 @@ p {
   .movie-card-img {
     display: inline-block;
     width: 185px;
+  }
+
+  .movie-card-overview {
+    font-size: 14px;
+    color: #999;
+    max-height: 58px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
   }
 }
 /* /MOVIE CARD */
