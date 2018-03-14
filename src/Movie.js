@@ -1,12 +1,12 @@
-import React, { PureComponent } from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import uuidV4 from 'uuid/v4'
-import { getMovieDetails } from './store/actions'
+import { getMovieDetails, cleanError } from './store/actions'
 import PointsBar from './components/PointsBar'
 import TabPannel from './components/TabPannel'
 
-class Movie extends PureComponent {
+class Movie extends Component {
   componentWillMount() {
     const { match, dispatch } = this.props
     dispatch(getMovieDetails(match.params.id))
@@ -14,6 +14,13 @@ class Movie extends PureComponent {
 
   render() {
     const { movieDetails, configuration } = this.props
+
+    if (this.props.error) {
+      // @TODO search better place to make redirection
+      this.props.dispatch(cleanError())
+      this.props.history.push('/error')
+      return false
+    }
 
     if (!movieDetails.title) {
       return <div />
@@ -200,6 +207,7 @@ function mapStateToProps(state) {
   return {
     movieDetails: state.movies.movieDetails,
     configuration: state.movies.configuration,
+    error: state.movies.error,
   };
 }
 

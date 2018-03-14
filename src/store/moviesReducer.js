@@ -1,4 +1,4 @@
-import { CONFIGURATION_SUCCESS, CONFIGURATION_FROM_LOCAL_STORAGE, DISCOVER_MOVIE_SUCCESS, MOVIE_DETAILS_SUCCESS } from './actions'
+import { CONFIGURATION_SUCCESS, CONFIGURATION_FROM_LOCAL_STORAGE, DISCOVER_MOVIE_SUCCESS, MOVIE_DETAILS_SUCCESS, ERROR } from './actions'
 
 export default function movies(state = {}, action) {
   switch (action.type) {
@@ -22,6 +22,11 @@ export default function movies(state = {}, action) {
       return {
         ...state,
         movieDetails: action.data,
+      };
+    case ERROR:
+      return {
+        ...state,
+        error: action.value,
       };
     default:
       return state;
